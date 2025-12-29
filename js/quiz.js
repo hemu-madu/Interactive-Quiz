@@ -13,7 +13,7 @@ let userScore = 0;
 window.onload = function () {
     let name = sessionStorage.getItem("name");
     if (!name) {
-        location.href = "start.html";
+        location.href = "index.html";
     }
     userNameElement.textContent = name;
     showQuestions(0);
