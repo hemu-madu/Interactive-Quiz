@@ -30,6 +30,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -135,8 +136,8 @@ body {
 /* Glass Card */
 .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     border: var(--glass-border);
     border-radius: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
@@ -168,6 +169,12 @@ body {
     font-size: 2rem;
     color: var(--primary);
     margin: 0 auto 20px;
+}
+
+.neu-icon-large img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
 }
 
 .success-glow {
@@ -249,6 +256,7 @@ body {
     padding: 15px 30px;
     border-radius: 50px;
     background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
     border: var(--glass-border);
     display: flex;
@@ -263,6 +271,11 @@ body {
     gap: 10px;
     font-weight: 700;
     color: var(--primary);
+}
+
+.brand-logo {
+    height: 30px;
+    width: auto;
 }
 
 .score-pill {
@@ -626,6 +639,7 @@ body {
 /* Party Specific Component Overrides */
 #view-start .entrance-card {
     background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
