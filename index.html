@@ -4,38 +4,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JavaScript Quiz | Premium Edition</title>
-
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- style.css -->
+    <title>NeuQuiz | Premium Edition</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="background-animation"></div>
-    <div class="wrapper glass-card">
-        <div class="welcome_text">
-            <div class="logo-area">
-                <i class="fas fa-brain"></i>
-            </div>
-            <h1>Ready to Challenge Yourself?</h1>
-            <p>Enter your details below to start the quiz.</p>
-            <form class="welcome_form" name="welcome_form" onsubmit="submitForm(event)">
-                <div class="input-group">
-                    <i class="fas fa-user"></i>
-                    <input type="text" name="name" placeholder="Enter your name" required autocomplete="off">
-                </div>
-                <button type="submit" class="btn-start">Start Quiz <i class="fas fa-arrow-right"></i></button>
-            </form>
-        </div>
-    </div>
 
-    <!-- js -->
-    <script src="js/start.js"></script>
+    <div class="background-mesh"></div>
+
+    <main class="app-container">
+
+        <!-- View 1: Start Screen -->
+        <section id="view-start" class="view active-view">
+            <div class="glass-card entrance-card">
+                <div class="logo-area">
+                    <div class="neu-icon-large">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h1>Interactive Quiz</h1>
+                    <p>Test your knowledge.</p>
+                </div>
+
+                <div class="input-area">
+                    <div class="neu-input-group">
+                        <input type="text" id="username" placeholder="Enter Alias" autocomplete="off">
+                        <span class="focus-border"></span>
+                    </div>
+                </div>
+
+                <button id="btn-start" class="neu-btn primary">
+                    <span>Start Session</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- View 2: Quiz HUD & Question -->
+        <section id="view-quiz" class="view hidden">
+            <!-- Header / HUD -->
+            <header class="quiz-header glass-bar">
+                <div class="brand">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Interactive Quiz</span>
+                </div>
+
+                <div class="timer-container">
+                    <svg class="timer-svg" viewBox="0 0 100 100">
+                        <circle class="timer-bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="timer-progress" cx="50" cy="50" r="45"></circle>
+                    </svg>
+                    <span id="timer-text">30</span>
+                </div>
+
+                <div class="score-pill neu-inset">
+                    <span class="label">Score</span>
+                    <span id="score-val">0</span>
+                </div>
+            </header>
+
+            <div class="quiz-content">
+                <div class="question-card glass-card">
+                    <div class="progress-indicator">
+                        <span id="q-current">1</span>
+                        <span class="divider">/</span>
+                        <span id="q-total">30</span>
+                    </div>
+                    <h2 id="question-text">Loading Question...</h2>
+                </div>
+
+                <div class="options-grid" id="options-container">
+                    <!-- Options injected here -->
+                </div>
+            </div>
+
+            <footer class="quiz-footer">
+                <button id="btn-next" class="neu-btn secondary hidden">
+                    <span>Next Question</span>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </footer>
+        </section>
+
+        <!-- View 3: Leaderboard -->
+        <section id="view-leaderboard" class="view hidden">
+            <div class="glass-card wide-card">
+                <div class="result-header">
+                    <div class="neu-icon-large success-glow">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2>Session Complete</h2>
+                    <p class="subtitle">Great effort, <span id="final-user">Player</span></p>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-box neu-inset">
+                        <span class="label">Total Score</span>
+                        <span class="value" id="final-score">0</span>
+                    </div>
+                    <div class="stat-box neu-inset">
+                        <span class="label">Accuracy</span>
+                        <span class="value" id="final-accuracy">0%</span>
+                    </div>
+                    <div class="stat-box neu-inset">
+                        <span class="label">Time Bonus</span>
+                        <span class="value" id="final-timebonus">0</span>
+                    </div>
+                </div>
+
+                <div class="leaderboard-list neu-inset-deep">
+                    <h3>Top Performers</h3>
+                    <ul id="leaderboard-list">
+                        <!-- List items injected -->
+                    </ul>
+                </div>
+
+                <div class="action-row">
+                    <button id="btn-restart" class="neu-btn primary">
+                        <i class="fas fa-redo"></i>
+                        <span>Replay</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Unified Logic -->
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
